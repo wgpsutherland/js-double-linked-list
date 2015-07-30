@@ -93,6 +93,9 @@ Returns the length of the list.
     
 ## Changelog
 
+* 1.1.0 - 30/07/2015:
+    * \+ \# unShift
+    * \+ \# unShift tests
 * 1.0.0 - 30/07/2015:
     * Rename all function names:
         * \# add -> \# push

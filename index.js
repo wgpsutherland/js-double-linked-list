@@ -16,7 +16,7 @@ function LinkedList () {
 
 // Adds the data to the end of the list
 LinkedList.prototype.push = function(data) {
-    if (this._start === null) {
+    if (this._start === null) { // if the list is empty
         this._start = makeNode();
         this._end = this._start;
     } else {
@@ -26,6 +26,21 @@ LinkedList.prototype.push = function(data) {
         this._end.previous = temp;
     }
     this._end.data = data;
+    this.length++;
+};
+
+// Adds the data to the front of the list
+LinkedList.prototype.unShift = function(data) {
+    if (this._start === null) { // if the list is empty
+        this._start = makeNode();
+        this._end = this._start;
+    } else {
+        var temp = this._start;
+        this._start.previous = makeNode();
+        this._start = this._start.previous;
+        this._start.next = temp;
+    }
+    this._start.data = data;
     this.length++;
 };
 

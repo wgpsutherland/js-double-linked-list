@@ -101,7 +101,75 @@ describe('testing linked-list', function () {
             expect(list.length).to.equal(2);
             list.push('three');
             expect(list.length).to.equal(3);
-        })
+        });
+    });
+
+    describe('#unShift', function() {
+
+        it('should change the first element in the list to be the added element', function() {
+            var list = new LinkedList();
+            list.unShift('one');
+            expect(list.first()).to.equal('one');
+            list.unShift('two');
+            expect(list.first()).to.equal('two');
+            list.unShift('three');
+            expect(list.first()).to.equal('three');
+        });
+
+        it('the first and last elements should be the same when added to an empty list', function() {
+            var list = new LinkedList();
+            list.unShift('one');
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
+        });
+
+        it('the length should increase by 1 when an element is unShifted onto the list', function () {
+            var list = new LinkedList();
+            expect(list.length).to.equal(0);
+            list.unShift('one');
+            expect(list.length).to.equal(1);
+            list.unShift('two');
+            expect(list.length).to.equal(2);
+            list.unShift('three');
+            expect(list.length).to.equal(3);
+        });
+
+        it('the list should survive shifting and unShifting in random orders', function() {
+            var list = new LinkedList();
+            list.unShift('one');
+            expect(list.length).to.equal(1);
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
+            list.unShift('two');
+            expect(list.length).to.equal(2);
+            expect(list.first()).to.equal('two');
+            expect(list.last()).to.equal('one');
+            list.unShift('three');
+            expect(list.length).to.equal(3);
+            expect(list.first()).to.equal('three');
+            expect(list.last()).to.equal('one');
+            list.shift();
+            expect(list.length).to.equal(2);
+            expect(list.first()).to.equal('two');
+            expect(list.last()).to.equal('one');
+            list.shift();
+            expect(list.length).to.equal(1);
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
+            list.shift();
+            expect(list.length).to.equal(0);
+            expect(list.first()).to.equal(null);
+            expect(list.last()).to.equal(null);
+            list.unShift('four');
+            list.unShift('five');
+            expect(list.length).to.equal(2);
+            expect(list.first()).to.equal('five');
+            expect(list.last()).to.equal('four');
+            list.shift();
+            expect(list.length).to.equal(1);
+            expect(list.first()).to.equal('four');
+            expect(list.last()).to.equal('four');
+        });
     });
 
     describe('#shift', function () {
