@@ -4,7 +4,7 @@ Double Linked List
 A JavaScript implementation of a double linked list. Much faster than the native JS array if your focus is adding
 and removing from large data sets. 
 
-Slow if you need to randomly access element from within the data set.
+Slow if you need to randomly access elements from within the data set.
 
 ## Installation
 
@@ -89,3 +89,10 @@ Returns the length of the list.
     list.add('two');
     list.add('three');
     console.log(list.length); // 3
+    
+    
+## Changelog
+
+* 0.1.1 - 30/07/2015 - Added git remotes and issues to the package.json.
+* 0.1.0 - 30/07/2015 - Initial implementation with constructor, \#add, \#removeFromStart, \#removeFromEnd, \#getStart, \#getEnd, .length and all tests.
+* 0.0.0 - 30/07/2015 - Initial publish with no contents.
