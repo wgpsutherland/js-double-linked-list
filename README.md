@@ -44,7 +44,7 @@ Add an item to the start of the list.
 
 ### \#pop
 
-    list.removeFromEnd();
+    list.pop();
 
 Remove the item at the end of the list, returning the removed item.
 Returns `null` if the list is empty.
@@ -57,7 +57,7 @@ Returns `null` if the list is empty.
     
 ### \#shift
 
-    list.removeFromStart();
+    list.shift();
 
 Remove the item at the start of the list, returning the removed item.
 Returns `null` if the list is empty.
@@ -70,7 +70,7 @@ Returns `null` if the list is empty.
     
 ### \#first
 
-    list.getStart();
+    list.first();
     
 Returns the item at the start of the list.
 Returns `null` if the list is empty.
@@ -82,7 +82,7 @@ Returns `null` if the list is empty.
     
 ### \#last
 
-    list.getEnd();
+    list.last();
     
 Returns the item at the end of the list.
 Returns `null` if the list is empty.
@@ -106,6 +106,10 @@ Returns the length of the list.
     
 ## Changelog
 
+* 1.1.2 - 30/07/2015:
+    * Small change to some errors in the README.
+* 1.1.1 - 30/07/2015:
+    * Add unShift function to the documentation.
 * 1.1.0 - 30/07/2015:
     * \+ \# unShift
     * \+ \# unShift tests
