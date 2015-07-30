@@ -15,7 +15,7 @@ function LinkedList () {
 }
 
 // Adds the data to the end of the list
-LinkedList.prototype.add = function(data) {
+LinkedList.prototype.push = function(data) {
     if (this._start === null) {
         this._start = makeNode();
         this._end = this._start;
@@ -30,7 +30,7 @@ LinkedList.prototype.add = function(data) {
 };
 
 // Removes the last item from the list
-LinkedList.prototype.removeFromEnd = function() {
+LinkedList.prototype.pop = function() {
     if(this._end) { // if the list isn't empty
         var data = this._end.data;
         if(this._end.previous === null) { // if the list is of length 1
@@ -48,7 +48,7 @@ LinkedList.prototype.removeFromEnd = function() {
 };
 
 // Removes the first item from the list
-LinkedList.prototype.removeFromStart = function() {
+LinkedList.prototype.shift = function() {
     if(this._start) { // if the list isn't empty
         var data = this._start.data;
         if(this._start.next === null) { // if the list is of length 1
@@ -66,7 +66,7 @@ LinkedList.prototype.removeFromStart = function() {
 };
 
 // Returns the item at the start of the list
-LinkedList.prototype.getStart = function() {
+LinkedList.prototype.first = function() {
     if(this._start) {
         return this._start.data;
     } else {
@@ -75,7 +75,7 @@ LinkedList.prototype.getStart = function() {
 };
 
 // Returns the item at the end of the list
-LinkedList.prototype.getEnd = function() {
+LinkedList.prototype.last = function() {
     if(this._end) {
         return this._end.data;
     } else {

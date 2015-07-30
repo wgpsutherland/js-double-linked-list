@@ -7,32 +7,32 @@ describe('testing linked-list', function () {
 
     describe('structure', function () {
 
-        it('should have a start of null when newly created', function () {
+        it('the first element should be null when newly created', function () {
             var list = new LinkedList();
-            expect(list.getStart()).to.equal(null);
+            expect(list.first()).to.equal(null);
         });
 
-        it('should have an end of null when newly created', function () {
+        it('the last element should be null when newly created', function () {
             var list = new LinkedList();
-            expect(list.getEnd()).to.equal(null);
+            expect(list.last()).to.equal(null);
         });
 
-        it('should have the same start and end when consisting of one element', function () {
+        it('the first and last elements should be the same when there is one element in the list', function () {
             var list = new LinkedList();
-            list.add('one');
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('one');
-            expect(list.getEnd()).to.equal(list.getEnd());
+            list.push('one');
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
+            expect(list.last()).to.equal(list.last());
         });
 
-        it('should have the correct start and end when it has multiple elements', function () {
+        it('the first and last elements should be correct when the list consists of multiple elements', function () {
             var list = new LinkedList();
-            list.add('one');
-            list.add('two');
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('two');
-            list.add('three');
-            expect(list.getEnd()).to.equal('three');
+            list.push('one');
+            list.push('two');
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('two');
+            list.push('three');
+            expect(list.last()).to.equal('three');
         });
     });
 
@@ -45,213 +45,213 @@ describe('testing linked-list', function () {
 
         it('should have the correct length when items have been added to it', function () {
             var list = new LinkedList();
-            list.add('one');
+            list.push('one');
             expect(list.length).to.equal(1);
-            list.add('two');
+            list.push('two');
             expect(list.length).to.equal(2);
-            list.add('three');
+            list.push('three');
             expect(list.length).to.equal(3);
         });
 
         it('should have the correct length when adding and removing elements from it', function () {
             var list = new LinkedList();
-            list.add('one');
-            list.add('two');
+            list.push('one');
+            list.push('two');
             expect(list.length).to.equal(2);
-            list.removeFromStart();
+            list.shift();
             expect(list.length).to.equal(1);
-            list.removeFromStart();
+            list.shift();
             expect(list.length).to.equal(0);
         });
 
         it('should not have a length below 0 if you try and remove from an empty list', function () {
             var list = new LinkedList();
-            list.removeFromStart();
+            list.shift();
             expect(list.length).to.equal(0);
-            list.removeFromEnd();
+            list.pop();
             expect(list.length).to.equal(0);
         });
     });
 
-    describe('#add', function () {
+    describe('#push', function () {
 
-        it('should change the end of the list to be the added element', function () {
+        it('should change the last element of the list to be the added element', function () {
             var list = new LinkedList();
-            list.add('one');
-            expect(list.getEnd()).to.equal('one');
-            list.add('two');
-            expect(list.getEnd()).to.equal('two');
-            list.add('three');
-            expect(list.getEnd()).to.equal('three');
+            list.push('one');
+            expect(list.last()).to.equal('one');
+            list.push('two');
+            expect(list.last()).to.equal('two');
+            list.push('three');
+            expect(list.last()).to.equal('three');
         });
 
-        it('should have the same start and end when added to an empty list', function () {
+        it('the first and last elements should be the same when added to an empty list', function () {
             var list = new LinkedList();
-            list.add('one');
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('one');
+            list.push('one');
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
         });
 
-        it('should have a length of one more when added to', function () {
+        it('the length should increase by 1 when an element is pushed to the list', function () {
             var list = new LinkedList();
             expect(list.length).to.equal(0);
-            list.add('one');
+            list.push('one');
             expect(list.length).to.equal(1);
-            list.add('two');
+            list.push('two');
             expect(list.length).to.equal(2);
-            list.add('three');
+            list.push('three');
             expect(list.length).to.equal(3);
         })
     });
 
-    describe('#removeFromStart', function () {
+    describe('#shift', function () {
 
-        it('after removing from the start, the second item in the list should become the start', function () {
+        it('after shifting, the second item in the list should become the first', function () {
             var list = new LinkedList();
-            list.add('one');
-            list.add('two');
-            list.removeFromStart();
-            expect(list.getStart()).to.equal('two');
+            list.push('one');
+            list.push('two');
+            list.shift();
+            expect(list.first()).to.equal('two');
         });
 
-        it('should survive removing and adding in random orders', function() {
+        it('the list should survive shifting and pushing in random orders', function() {
             var list = new LinkedList();
-            list.add('one');
+            list.push('one');
             expect(list.length).to.equal(1);
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('one');
-            list.add('two');
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
+            list.push('two');
             expect(list.length).to.equal(2);
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('two');
-            list.add('three');
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('two');
+            list.push('three');
             expect(list.length).to.equal(3);
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('three');
-            list.removeFromStart();
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('three');
+            list.shift();
             expect(list.length).to.equal(2);
-            expect(list.getStart()).to.equal('two');
-            expect(list.getEnd()).to.equal('three');
-            list.removeFromStart();
+            expect(list.first()).to.equal('two');
+            expect(list.last()).to.equal('three');
+            list.shift();
             expect(list.length).to.equal(1);
-            expect(list.getStart()).to.equal('three');
-            expect(list.getEnd()).to.equal('three');
-            list.removeFromStart();
+            expect(list.first()).to.equal('three');
+            expect(list.last()).to.equal('three');
+            list.shift();
             expect(list.length).to.equal(0);
-            expect(list.getStart()).to.equal(null);
-            expect(list.getEnd()).to.equal(null);
-            list.add('four');
-            list.add('five');
+            expect(list.first()).to.equal(null);
+            expect(list.last()).to.equal(null);
+            list.push('four');
+            list.push('five');
             expect(list.length).to.equal(2);
-            expect(list.getStart()).to.equal('four');
-            expect(list.getEnd()).to.equal('five');
-            list.removeFromStart();
+            expect(list.first()).to.equal('four');
+            expect(list.last()).to.equal('five');
+            list.shift();
             expect(list.length).to.equal(1);
-            expect(list.getStart()).to.equal('five');
-            expect(list.getEnd()).to.equal('five');
+            expect(list.first()).to.equal('five');
+            expect(list.last()).to.equal('five');
         });
 
         it('should return the removed element data', function () {
             var list = new LinkedList();
-            list.add('one');
-            list.add('two');
-            list.add('three');
-            expect(list.removeFromStart()).to.equal('one');
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            expect(list.shift()).to.equal('one');
         });
 
         it('should return null when removing from an empty list', function () {
             var list = new LinkedList();
-            expect(list.removeFromStart()).to.equal(null);
+            expect(list.shift()).to.equal(null);
         });
 
-        it('should have a length of one less after removing', function () {
+        it('should have a length of one less after shifting', function () {
             var list = new LinkedList();
-            list.add('one');
-            list.add('two');
-            list.add('three');
+            list.push('one');
+            list.push('two');
+            list.push('three');
             expect(list.length).to.equal(3);
-            list.removeFromStart();
+            list.shift();
             expect(list.length).to.equal(2);
-            list.removeFromStart();
+            list.shift();
             expect(list.length).to.equal(1);
-            list.removeFromStart();
+            list.shift();
             expect(list.length).to.equal(0);
         });
     });
 
-    describe('#removeFromEnd', function () {
+    describe('#pop', function () {
 
-        it('after removing from the end, the second last item in the list should become the end', function () {
+        it('after popping, the second last item in the list should become the last', function () {
             var list = new LinkedList();
-            list.add('one');
-            list.add('two');
-            list.add('three');
-            list.add('four');
-            list.removeFromEnd();
-            expect(list.getEnd()).to.equal('three');
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.push('four');
+            list.pop();
+            expect(list.last()).to.equal('three');
         });
 
-        it('should survive removing and adding in random orders', function() {
+        it('should survive popping and adding in random orders', function() {
             var list = new LinkedList();
-            list.add('one');
+            list.push('one');
             expect(list.length).to.equal(1);
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('one');
-            list.add('two');
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
+            list.push('two');
             expect(list.length).to.equal(2);
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('two');
-            list.add('three');
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('two');
+            list.push('three');
             expect(list.length).to.equal(3);
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('three');
-            list.removeFromEnd();
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('three');
+            list.pop();
             expect(list.length).to.equal(2);
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('two');
-            list.removeFromEnd();
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('two');
+            list.pop();
             expect(list.length).to.equal(1);
-            expect(list.getStart()).to.equal('one');
-            expect(list.getEnd()).to.equal('one');
-            list.removeFromEnd();
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
+            list.pop();
             expect(list.length).to.equal(0);
-            expect(list.getStart()).to.equal(null);
-            expect(list.getEnd()).to.equal(null);
-            list.add('four');
-            list.add('five');
+            expect(list.first()).to.equal(null);
+            expect(list.last()).to.equal(null);
+            list.push('four');
+            list.push('five');
             expect(list.length).to.equal(2);
-            expect(list.getStart()).to.equal('four');
-            expect(list.getEnd()).to.equal('five');
-            list.removeFromEnd();
+            expect(list.first()).to.equal('four');
+            expect(list.last()).to.equal('five');
+            list.pop();
             expect(list.length).to.equal(1);
-            expect(list.getStart()).to.equal('four');
-            expect(list.getEnd()).to.equal('four');
+            expect(list.first()).to.equal('four');
+            expect(list.last()).to.equal('four');
         });
 
         it('should return the removed element data', function () {
             var list = new LinkedList();
-            list.add('one');
-            list.add('two');
-            list.add('three');
-            expect(list.removeFromEnd()).to.equal('three');
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            expect(list.pop()).to.equal('three');
         });
 
         it('should return null when removing from an empty list', function () {
             var list = new LinkedList();
-            expect(list.removeFromEnd()).to.equal(null);
+            expect(list.pop()).to.equal(null);
         });
 
-        it('should have a length of one less after removing', function () {
+        it('should have a length of one less after popping', function () {
             var list = new LinkedList();
-            list.add('one');
-            list.add('two');
-            list.add('three');
+            list.push('one');
+            list.push('two');
+            list.push('three');
             expect(list.length).to.equal(3);
-            list.removeFromEnd();
+            list.pop();
             expect(list.length).to.equal(2);
-            list.removeFromEnd();
+            list.pop();
             expect(list.length).to.equal(1);
-            list.removeFromEnd();
+            list.pop();
             expect(list.length).to.equal(0);
         });
     });
@@ -264,10 +264,10 @@ describe('testing linked-list', function () {
             var startTime = new Date();
             var list = new LinkedList();
             for(var i = 0; i < iterations; i++) {
-                list.add('item');
+                list.push('item');
             }
             for(i = 0; i < iterations; i++) {
-                list.removeFromStart();
+                list.shift();
             }
             var endTime = new Date();
             var time = endTime.getTime() - startTime.getTime();

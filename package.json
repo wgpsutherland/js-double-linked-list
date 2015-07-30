@@ -1,6 +1,6 @@
 {
   "name": "double-linked-list",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "A double linked list implementation.",
   "main": "index.js",
   "scripts": {

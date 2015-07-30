@@ -18,89 +18,99 @@ Slow if you need to randomly access elements from within the data set.
     
 ## Method reference
 
-### List\#add
+### \#push
 
-    list.add(item);
+    list.push(item);
 
 Add an item to the end of the list.
 
-    list.add('one');
-    list.add('two');
-    list.add('three');
-    console.log(list.getEnd()); // 'three'
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    console.log(list.last()); // 'three'
 
-### List\#removeFromEnd
+### \#pop
 
     list.removeFromEnd();
 
 Remove the item at the end of the list, returning the removed item.
 Returns `null` if the list is empty.
 
-    list.add('one');
-    list.add('two');
-    list.add('three');
-    var item = list.removeFromEnd();
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    var item = list.pop();
     console.log(item); // 'three'
     
-### List\#removeFromStart
+### \#shift
 
     list.removeFromStart();
 
 Remove the item at the start of the list, returning the removed item.
 Returns `null` if the list is empty.
 
-    list.add('one');
-    list.add('two');
-    list.add('three');
-    var item = list.removeFromStart();
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    var item = list.shift();
     console.log(item); // 'one'
     
-### List\#getStart
+### \#first
 
     list.getStart();
     
 Returns the item at the start of the list.
 Returns `null` if the list is empty.
 
-    list.add('one');
-    list.add('two');
-    list.add('three');
-    console.log(list.getStart()); // 'one'
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    console.log(list.first()); // 'one'
     
-### List\#getEnd
+### \#last
 
     list.getEnd();
     
 Returns the item at the end of the list.
 Returns `null` if the list is empty.
 
-    list.add('one');
-    list.add('two');
-    list.add('three');
-    console.log(list.getEnd()); // 'three'
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    console.log(list.last()); // 'three'
     
-### List.length
+### .length
 
     list.length;
     
 Returns the length of the list.
 
-    list.add('one');
-    list.add('two');
-    list.add('three');
+    list.push('one');
+    list.push('two');
+    list.push('three');
     console.log(list.length); // 3
     
     
 ## Changelog
 
-* 0.1.1 - 30/07/2015 - Added git remotes and issues to the package.json.
-* 0.1.0 - 30/07/2015 - Initial implementation with: 
-    * Constructor
-    * \#add
-    * \#removeFromStart
-    * \#removeFromEnd
-    * \#getStart
-    * \#getEnd
-    * .length
-    * Passing tests
+* 1.0.0 - 30/07/2015:
+    * Rename all function names:
+        * \# add -> \# push
+        * \# removeFromStart -> \# shift
+        * \# removeFromEnd -> \# pop
+        * \# getStart -> \# first
+        * \# getEnd -> \# last
+    * Update the README formatting and information within.
+* 0.1.1 - 30/07/2015:
+    * Added git remotes and issues to the package.json.
+* 0.1.0 - 30/07/2015:
+    * Initial implementation with: 
+        * Constructor
+        * \# add
+        * \# removeFromStart
+        * \# removeFromEnd
+        * \# getStart
+        * \# getEnd
+        * .length
+        * Passing tests
 * 0.0.0 - 30/07/2015 - Initial publish with no contents.
