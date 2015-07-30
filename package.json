@@ -10,7 +10,9 @@
     "linked",
     "list",
     "data",
-    "structure"
+    "structure",
+    "double",
+    "array"
   ],
   "author": "Will Sutherland",
   "license": "ISC",
