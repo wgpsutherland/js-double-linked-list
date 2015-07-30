@@ -94,5 +94,13 @@ Returns the length of the list.
 ## Changelog
 
 * 0.1.1 - 30/07/2015 - Added git remotes and issues to the package.json.
-* 0.1.0 - 30/07/2015 - Initial implementation with constructor, \#add, \#removeFromStart, \#removeFromEnd, \#getStart, \#getEnd, .length and all tests.
+* 0.1.0 - 30/07/2015 - Initial implementation with: 
+    * Constructor
+    * \#add
+    * \#removeFromStart
+    * \#removeFromEnd
+    * \#getStart
+    * \#getEnd
+    * .length
+    * Passing tests
 * 0.0.0 - 30/07/2015 - Initial publish with no contents.
