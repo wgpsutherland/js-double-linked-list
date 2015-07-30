@@ -1,0 +1,21 @@
+{
+  "name": "double-linked-list",
+  "version": "0.1.0",
+  "description": "A double linked list implementation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "linked",
+    "list",
+    "data",
+    "structure"
+  ],
+  "author": "Will Sutherland",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
+  }
+}
