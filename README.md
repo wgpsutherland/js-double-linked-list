@@ -28,6 +28,19 @@ Add an item to the end of the list.
     list.push('two');
     list.push('three');
     console.log(list.last()); // 'three'
+    console.log(list.first()); // 'one'
+    
+### \#unShift
+
+    list.unShift(item);
+
+Add an item to the start of the list.
+
+    list.unShift('one');
+    list.unShift('two');
+    list.unShift('three');
+    console.log(list.first()); // 'three'
+    console.log(list.last()); // 'one'
 
 ### \#pop
 
