@@ -6,6 +6,11 @@ and removing from large data sets.
 
 Slow if you need to randomly access elements from within the data set.
 
+* [`Installation`](#installation)   
+* [`Use`](#use)   
+* [`Documentation`](#documentation)   
+* [`Changelog`](#changelog)   
+
 ## Installation
 
     $ npm install double-linked-list
@@ -16,9 +21,19 @@ Slow if you need to randomly access elements from within the data set.
     
     var list = new LinkedList();
     
-## Method reference
+## Documentation
+    
+* [`push`](#push)   
+* [`unShift`](#unShift)   
+* [`pop`](#pop)   
+* [`shift`](#shift)   
+* [`first`](#first)   
+* [`last`](#last)   
+* [`length`](#length)   
 
-### \#push
+### Method reference
+
+#### \#push
 
     list.push(item);
 
@@ -30,7 +45,7 @@ Add an item to the end of the list.
     console.log(list.last()); // 'three'
     console.log(list.first()); // 'one'
     
-### \#unShift
+#### \#unShift
 
     list.unShift(item);
 
@@ -42,7 +57,7 @@ Add an item to the start of the list.
     console.log(list.first()); // 'three'
     console.log(list.last()); // 'one'
 
-### \#pop
+#### \#pop
 
     list.removeFromEnd();
 
@@ -55,7 +70,7 @@ Returns `null` if the list is empty.
     var item = list.pop();
     console.log(item); // 'three'
     
-### \#shift
+#### \#shift
 
     list.removeFromStart();
 
@@ -68,7 +83,7 @@ Returns `null` if the list is empty.
     var item = list.shift();
     console.log(item); // 'one'
     
-### \#first
+#### \#first
 
     list.getStart();
     
@@ -80,7 +95,7 @@ Returns `null` if the list is empty.
     list.push('three');
     console.log(list.first()); // 'one'
     
-### \#last
+#### \#last
 
     list.getEnd();
     
@@ -92,7 +107,7 @@ Returns `null` if the list is empty.
     list.push('three');
     console.log(list.last()); // 'three'
     
-### .length
+#### .length
 
     list.length;
     
