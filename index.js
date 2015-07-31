@@ -2,7 +2,6 @@ module.exports = LinkedList;
 
 function makeNode() {
     return {
-        data: null,
         previous: null,
         next: null
     }
@@ -58,7 +57,7 @@ LinkedList.prototype.pop = function() {
         this.length--;
         return data;
     } else {
-        return null;
+        return undefined;
     }
 };
 
@@ -76,7 +75,7 @@ LinkedList.prototype.shift = function() {
         this.length--;
         return data;
     } else {
-        return null;
+        return undefined;
     }
 };
 
@@ -85,7 +84,7 @@ LinkedList.prototype.first = function() {
     if(this._start) {
         return this._start.data;
     } else {
-        return null;
+        return undefined;
     }
 };
 
@@ -94,6 +93,19 @@ LinkedList.prototype.last = function() {
     if(this._end) {
         return this._end.data;
     } else {
-        return null;
+        return undefined;
+    }
+};
+
+// Returns the element at the given index
+LinkedList.prototype.get = function(i) {
+    if(i >= this.length || i < 0 || i % 1 !== 0) {
+        return undefined;
+    } else {
+        var item = this._start;
+        for(var j = 0; j < i; j++) {
+            item = item.next;
+        }
+        return item.data;
     }
 };

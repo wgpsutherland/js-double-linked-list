@@ -7,14 +7,14 @@ describe('testing linked-list', function () {
 
     describe('structure', function () {
 
-        it('the first element should be null when newly created', function () {
+        it('the first element should be undefined when newly created', function () {
             var list = new LinkedList();
-            expect(list.first()).to.equal(null);
+            expect(list.first()).to.equal(undefined);
         });
 
-        it('the last element should be null when newly created', function () {
+        it('the last element should be undefined when newly created', function () {
             var list = new LinkedList();
-            expect(list.last()).to.equal(null);
+            expect(list.last()).to.equal(undefined);
         });
 
         it('the first and last elements should be the same when there is one element in the list', function () {
@@ -102,6 +102,12 @@ describe('testing linked-list', function () {
             list.push('three');
             expect(list.length).to.equal(3);
         });
+
+        it('should return null if the data passed into it is null', function() {
+            var list = new LinkedList();
+            list.push(null);
+            expect(list.first()).to.equal(null);
+        });
     });
 
     describe('#unShift', function() {
@@ -158,8 +164,8 @@ describe('testing linked-list', function () {
             expect(list.last()).to.equal('one');
             list.shift();
             expect(list.length).to.equal(0);
-            expect(list.first()).to.equal(null);
-            expect(list.last()).to.equal(null);
+            expect(list.first()).to.equal(undefined);
+            expect(list.last()).to.equal(undefined);
             list.unShift('four');
             list.unShift('five');
             expect(list.length).to.equal(2);
@@ -169,6 +175,12 @@ describe('testing linked-list', function () {
             expect(list.length).to.equal(1);
             expect(list.first()).to.equal('four');
             expect(list.last()).to.equal('four');
+        });
+
+        it('should return null if the data passed into it is null', function() {
+            var list = new LinkedList();
+            list.unShift(null);
+            expect(list.first()).to.equal(null);
         });
     });
 
@@ -206,8 +218,8 @@ describe('testing linked-list', function () {
             expect(list.last()).to.equal('three');
             list.shift();
             expect(list.length).to.equal(0);
-            expect(list.first()).to.equal(null);
-            expect(list.last()).to.equal(null);
+            expect(list.first()).to.equal(undefined);
+            expect(list.last()).to.equal(undefined);
             list.push('four');
             list.push('five');
             expect(list.length).to.equal(2);
@@ -227,9 +239,9 @@ describe('testing linked-list', function () {
             expect(list.shift()).to.equal('one');
         });
 
-        it('should return null when removing from an empty list', function () {
+        it('should return undefined when removing from an empty list', function () {
             var list = new LinkedList();
-            expect(list.shift()).to.equal(null);
+            expect(list.shift()).to.equal(undefined);
         });
 
         it('should have a length of one less after shifting', function () {
@@ -283,8 +295,8 @@ describe('testing linked-list', function () {
             expect(list.last()).to.equal('one');
             list.pop();
             expect(list.length).to.equal(0);
-            expect(list.first()).to.equal(null);
-            expect(list.last()).to.equal(null);
+            expect(list.first()).to.equal(undefined);
+            expect(list.last()).to.equal(undefined);
             list.push('four');
             list.push('five');
             expect(list.length).to.equal(2);
@@ -304,9 +316,9 @@ describe('testing linked-list', function () {
             expect(list.pop()).to.equal('three');
         });
 
-        it('should return null when removing from an empty list', function () {
+        it('should return undefined when removing from an empty list', function () {
             var list = new LinkedList();
-            expect(list.pop()).to.equal(null);
+            expect(list.pop()).to.equal(undefined);
         });
 
         it('should have a length of one less after popping', function () {
@@ -321,6 +333,98 @@ describe('testing linked-list', function () {
             expect(list.length).to.equal(1);
             list.pop();
             expect(list.length).to.equal(0);
+        });
+    });
+
+    describe('#get', function () {
+
+        it('should return the correct item at the given index', function () {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.push('four');
+            expect(list.get(0)).to.equal('one');
+            expect(list.get(1)).to.equal('two');
+            expect(list.get(2)).to.equal('three');
+            expect(list.get(3)).to.equal('four');
+        });
+
+        it('should return undefined if a negative index is given', function() {
+            var list = new LinkedList();
+            list.push('one');
+            expect(list.get(-1)).to.equal(undefined);
+            expect(list.get(-10)).to.equal(undefined);
+            expect(list.get(-0.1)).to.equal(undefined);
+            expect(list.get(-100)).to.equal(undefined);
+        });
+
+        it('should return undefined if used on an empty list', function() {
+            var list = new LinkedList();
+            expect(list.get(0)).to.equal(undefined);
+        });
+
+        it('should return undefined if a decimal index is given', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.push('four');
+            list.push('five');
+            expect(list.get(0.1)).to.equal(undefined);
+            expect(list.get(1.5)).to.equal(undefined);
+            expect(list.get(3.99999)).to.equal(undefined);
+        });
+
+        it('should return undefined if too great an index is given', function() {
+            var list = new LinkedList();
+            expect(list.get(0)).to.equal(undefined);
+            list.push('one');
+            expect(list.get(5)).to.equal(undefined);
+            expect(list.get(100)).to.equal(undefined);
+            expect(list.get(list.length)).to.equal(undefined);
+            expect(list.get(list.length + 0.1)).to.equal(undefined);
+        });
+
+        it('should return the actual reference to the object that was passed into the list', function() {
+            var list = new LinkedList();
+            var string = 'one';
+            list.push(string);
+            expect(list.get(0)).to.equal(string);
+
+            list = new LinkedList();
+            var obj = {foo: 'bar'};
+            list.push(obj);
+            expect(list.get(0)).to.equal(obj);
+        });
+
+        it('when items in front are removed, the correct index of an item should change', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.push('four');
+            expect(list.get(3)).to.equal('four');
+            list.shift();
+            expect(list.get(2)).to.equal('four');
+            list.shift();
+            expect(list.get(1)).to.equal('four');
+            list.shift();
+            expect(list.get(0)).to.equal('four');
+        });
+
+        it('the item at index 0 should be the first item in the list', function() {
+            var list = new LinkedList();
+            list.push('one');
+            expect(list.get(0)).to.equal(list.first());
+        });
+
+        it('the item at index list.length-1 should be the last item in the list', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            expect(list.get(list.length - 1)).to.equal(list.last());
         });
     });
 
