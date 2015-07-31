@@ -426,6 +426,35 @@ describe('testing linked-list', function () {
             list.push('three');
             expect(list.get(list.length - 1)).to.equal(list.last());
         });
+
+        it('should return the correct item on a large list', function() {
+            var list = new LinkedList();
+            list.push('hello');
+            list.push('hello');
+            list.push('hello');
+            list.push('hello');
+            list.push('four'); // i = 4
+            list.push('hello');
+            list.push('hello');
+            list.push('seven'); // i = 7
+            list.push('eight'); // i = 8
+            list.push('nine'); // i = 9
+            list.push('hello');
+            list.push('hello');
+            list.push('hello');
+            list.push('thirteen'); // 13
+            list.push('hello');
+            list.push('hello'); // list.length === 16
+            expect(list.get(4)).to.equal('four');
+            expect(list.get(13)).to.equal('thirteen');
+            expect(list.get(7)).to.equal('seven');
+            expect(list.get(8)).to.equal('eight');
+            expect(list.get(9)).to.equal('nine');
+            list.push('hello'); // list.length === 17
+            expect(list.get(7)).to.equal('seven');
+            expect(list.get(8)).to.equal('eight');
+            expect(list.get(9)).to.equal('nine');
+        });
     });
 
     describe('time testing to see how it handles large lists', function() {

@@ -136,6 +136,8 @@ Returns the length of the list.
     
 ## Changelog
 
+* 2.0.1 - 31/07/2015:
+    * Make the get function faster by implementing back to front search.
 * 2.0.0 - 31/07/2015:
     * \+ \# get
     * \+ \# get tests

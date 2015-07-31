@@ -99,12 +99,19 @@ LinkedList.prototype.last = function() {
 
 // Returns the element at the given index
 LinkedList.prototype.get = function(i) {
+    var item, j;
     if(i >= this.length || i < 0 || i % 1 !== 0) {
         return undefined;
-    } else {
-        var item = this._start;
-        for(var j = 0; j < i; j++) {
+    } else if(i < this.length / 2) { // first -> middle
+        item = this._start;
+        for(j = 0; j < i; j++) {
             item = item.next;
+        }
+        return item.data;
+    } else { // middle <- last
+        item = this._end;
+        for(j = this.length - 1; j > i; j--) {
+            item = item.previous;
         }
         return item.data;
     }
