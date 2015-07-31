@@ -1,7 +1,8 @@
 module.exports = LinkedList;
 
-function makeNode() {
+function makeNode(data) {
     return {
+        data: data,
         previous: null,
         next: null
     }
@@ -16,30 +17,28 @@ function LinkedList () {
 // Adds the data to the end of the list
 LinkedList.prototype.push = function(data) {
     if (this._start === null) { // if the list is empty
-        this._start = makeNode();
+        this._start = makeNode(data);
         this._end = this._start;
     } else {
         var temp = this._end;
-        this._end.next = makeNode();
+        this._end.next = makeNode(data);
         this._end = this._end.next;
         this._end.previous = temp;
     }
-    this._end.data = data;
     this.length++;
 };
 
 // Adds the data to the front of the list
 LinkedList.prototype.unShift = function(data) {
     if (this._start === null) { // if the list is empty
-        this._start = makeNode();
+        this._start = makeNode(data);
         this._end = this._start;
     } else {
         var temp = this._start;
-        this._start.previous = makeNode();
+        this._start.previous = makeNode(data);
         this._start = this._start.previous;
         this._start.next = temp;
     }
-    this._start.data = data;
     this.length++;
 };
 
