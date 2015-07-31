@@ -99,20 +99,30 @@ LinkedList.prototype.last = function() {
 
 // Returns the element at the given index
 LinkedList.prototype.get = function(i) {
-    var item, j;
-    if(i >= this.length || i < 0 || i % 1 !== 0) {
+    var node = findNode(this, i);
+    if(node) {
+        return node.data;
+    } else {
         return undefined;
-    } else if(i < this.length / 2) { // first -> middle
-        item = this._start;
+    }
+};
+
+// Inner 'private' function to locate a node at the given index
+function findNode(that, i) {
+    var item, j;
+    if(i >= that.length || i < 0 || i % 1 !== 0) {
+        return null;
+    } else if(i < that.length / 2) { // first -> middle
+        item = that._start;
         for(j = 0; j < i; j++) {
             item = item.next;
         }
-        return item.data;
+        return item;
     } else { // middle <- last
-        item = this._end;
-        for(j = this.length - 1; j > i; j--) {
+        item = that._end;
+        for(j = that.length - 1; j > i; j--) {
             item = item.previous;
         }
-        return item.data;
+        return item;
     }
-};
+}
