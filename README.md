@@ -24,7 +24,7 @@ Slow if you need to randomly access elements from within the data set.
 ## Documentation
     
 * [`push`](#push)   
-* [`unShift`](#unShift)   
+* [`unShift`](#unshift)   
 * [`pop`](#pop)   
 * [`shift`](#shift)   
 * [`first`](#first)   
