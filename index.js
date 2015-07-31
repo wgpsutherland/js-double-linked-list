@@ -106,6 +106,29 @@ LinkedList.prototype.get = function(i) {
     }
 };
 
+// Add the data to the given index in the list
+LinkedList.prototype.add = function(i, data) {
+    if(i === 0) {
+        this.unshift(data);
+    } else if(i === this.length - 1) {
+        this.push(data);
+    } else {
+        var node = findNode(this, i);
+        if(node) {
+            var before = node.previous;
+            var after = node;
+            var newNode = makeNode(data);
+            newNode.previous = before;
+            before.next = newNode;
+            newNode.next = after;
+            after.previous = newNode;
+            this.length++;
+        } else {
+            // not sure how to handle failure to find the node
+        }
+    }
+};
+
 // Inner 'private' function to locate a node at the given index
 function findNode(that, i) {
     var item, j;

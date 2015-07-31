@@ -457,6 +457,51 @@ describe('testing linked-list', function () {
         });
     });
 
+    describe('#add', function() {
+
+        it('should place the item in the correct position', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.push('four');
+            list.push('five');
+
+            list.add(1, 'new1');
+            expect(list.get(1)).to.equal('new1');
+            list.add(3, 'new3');
+            expect(list.get(3)).to.equal('new3');
+            list.add(4, 'new4');
+            expect(list.get(4)).to.equal('new4');
+        });
+
+        it('adding to index 0 should make the item the first in the list', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.add(0, 'new1');
+            expect(list.first()).to.equal('new1');
+        });
+
+        it('adding to index list.length - 1 should make the item the last in the list', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.add(list.length - 1, 'new1');
+            expect(list.last()).to.equal('new1');
+        });
+
+        it.skip('should move the other items in the list correctly', function() {
+
+        });
+
+        it('should increase the length by one', function() {
+            var list = new LinkedList();
+            list.add(0, 'one');
+            list.add(0, 'two');
+            list.add(0, 'three');
+            expect(list.length).to.equal(3);
+        });
+    });
+
     describe('time testing to see how it handles large lists', function() {
 
         var iterations = 100000;
