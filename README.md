@@ -121,6 +121,8 @@ Returns the length of the list.
     
 ## Changelog
 
+* 1.1.3 - 31/07/2015:
+    * Add navigation to the README.
 * 1.1.2 - 30/07/2015:
     * Small change to some errors in the README.
 * 1.1.1 - 30/07/2015:
