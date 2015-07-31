@@ -1,6 +1,6 @@
 {
   "name": "double-linked-list",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A double linked list implementation.",
   "main": "index.js",
   "scripts": {
@@ -19,12 +19,17 @@
     "list",
     "data",
     "structure",
+    "data structure",
+    "data-structure",
     "double",
     "array",
     "double-linked-list",
     "linked-list",
     "linked list",
-    "double linked list"
+    "double linked list",
+    "doubly linked list",
+    "doubly-linked-list",
+    "doubly"
   ],
   "author": "Will Sutherland",
   "license": "ISC",

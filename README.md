@@ -136,34 +136,31 @@ Returns the length of the list.
     
 ## Changelog
 
-* 2.0.1 - 31/07/2015:
-    * Make the get function faster by implementing back to front search.
-* 2.0.0 - 31/07/2015:
-    * \+ \# get
-    * \+ \# get tests
-    * Return `undefined` if the data doesn't exist instead of `null`.
-    * Add get function to the documentation.
-* 1.1.3 - 31/07/2015:
-    * Add navigation to the README.
-* 1.1.2 - 30/07/2015:
-    * Small change to some errors in the README.
-* 1.1.1 - 30/07/2015:
-    * Add unShift function to the documentation.
-* 1.1.0 - 30/07/2015:
-    * \+ \# unShift
-    * \+ \# unShift tests
-* 1.0.0 - 30/07/2015:
-    * Rename all function names:
+* 2.0.x - 31/07/2015:
+    * Add some keywords to the package.json. (2.0.2)
+    * Edit formatting of changelog. (2.0.2)
+    * Make the get function faster by implementing back to front search. (2.0.1)
+    * \+ \# get (2.0.0)
+    * \+ \# get tests (2.0.0)
+    * Return `undefined` if the data doesn't exist instead of `null`. (2.0.0)
+    * Add get function to the documentation. (2.0.0)
+* 1.1.x - 30/07/2015:
+    * Add navigation to the README. (1.1.3)
+    * Small change to some errors in the README. (1.1.2)
+    * Add unShift function to the documentation. (1.1.1)
+    * \+ \# unShift (1.1.0)
+    * \+ \# unShift tests (1.1.0)
+* 1.0.x - 30/07/2015:
+    * Rename all function names: (1.0.0)
         * \# add -> \# push
         * \# removeFromStart -> \# shift
         * \# removeFromEnd -> \# pop
         * \# getStart -> \# first
         * \# getEnd -> \# last
     * Update the README formatting and information within.
-* 0.1.1 - 30/07/2015:
-    * Added git remotes and issues to the package.json.
-* 0.1.0 - 30/07/2015:
-    * Initial implementation with: 
+* 0.1.x - 30/07/2015:
+    * Added git remotes and issues to the package.json. (0.1.1)
+    * Initial implementation with: (0.1.0)
         * Constructor
         * \# add
         * \# removeFromStart
@@ -172,4 +169,4 @@ Returns the length of the list.
         * \# getEnd
         * .length
         * Passing tests
-* 0.0.0 - 30/07/2015 - Initial publish with no contents.
+* 0.0.x - 30/07/2015 - Initial publish with no contents. (0.0.0)
