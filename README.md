@@ -30,6 +30,7 @@ Slow if you need to randomly access elements from within the data set.
 * [`first`](#first)   
 * [`last`](#last)   
 * [`get`](#get)   
+* [`add`](#add)   
 * [`length`](#length)   
 
 ### Method reference
@@ -121,6 +122,24 @@ Returns `undefined` if an invalid value is given.
     console.log(list.get(0)); // 'one'
     console.log(list.get(1)); // 'two'
     console.log(list.get(2)); // 'three'
+    
+#### \#add
+
+    list.add(i, item);
+    
+Adds the item to the list at the given index.    
+
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    
+    list.add(1, 'hello');
+    list.add(2, 'you');
+    list.add(list.length, 'something'); // adds to the end of the list
+    
+    console.log(list.get(1)); // 'hello'
+    console.log(list.get(2)); // 'you'
+    console.log(list.get(5)); // 'something'
     
 #### .length
 
