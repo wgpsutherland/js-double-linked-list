@@ -109,8 +109,8 @@ LinkedList.prototype.get = function(i) {
 // Add the data to the given index in the list
 LinkedList.prototype.add = function(i, data) {
     if(i === 0) {
-        this.unshift(data);
-    } else if(i === this.length - 1) {
+        this.unShift(data);
+    } else if(i === this.length) {
         this.push(data);
     } else {
         var node = findNode(this, i);

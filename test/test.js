@@ -482,15 +482,23 @@ describe('testing linked-list', function () {
             expect(list.first()).to.equal('new1');
         });
 
-        it('adding to index list.length - 1 should make the item the last in the list', function() {
+        it('adding to index list.length should make the item the last in the list', function() {
             var list = new LinkedList();
             list.push('one');
-            list.add(list.length - 1, 'new1');
+            list.add(list.length, 'new1');
             expect(list.last()).to.equal('new1');
         });
 
-        it.skip('should move the other items in the list correctly', function() {
-
+        it('should move the other items in the list correctly', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.add(1, 'hello');
+            expect(list.get(0)).to.equal('one');
+            expect(list.get(1)).to.equal('hello');
+            expect(list.get(2)).to.equal('two');
+            expect(list.get(3)).to.equal('three');
         });
 
         it('should increase the length by one', function() {
