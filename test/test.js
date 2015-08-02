@@ -635,6 +635,33 @@ describe('testing linked-list', function () {
         });
     });
 
+    describe('#toString', function() {
+
+        it('should return the list in a nice format', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            expect(list.toString()).to.equal("one, two, three");
+        });
+
+        it('should return an object in a readable format', function() {
+            var list = new LinkedList();
+            list.push({
+                one: "2"
+            });
+            list.push({
+                two: "2"
+            });
+            expect(list.toString()).to.equal('{"one":"2"}, {"two":"2"}');
+        });
+
+        it('should return the empty string if the list is empty', function() {
+            var list = new LinkedList();
+            expect(list.toString()).to.equal("");
+        });
+    });
+
     describe('time testing to see how it handles large lists', function() {
 
         var iterations = 100000;
