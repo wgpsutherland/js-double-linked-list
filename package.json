@@ -1,7 +1,7 @@
 {
   "name": "double-linked-list",
   "version": "2.0.2",
-  "description": "A double linked list implementation.",
+  "description": "A doubly-linked list implementation.",
   "main": "index.js",
   "scripts": {
     "test": "mocha"

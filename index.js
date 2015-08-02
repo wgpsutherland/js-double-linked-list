@@ -129,6 +129,26 @@ LinkedList.prototype.add = function(i, data) {
     }
 };
 
+// Remove the item at the given index in the list
+LinkedList.prototype.remove = function(i) {
+    if(i == 0) {
+        return this.shift();
+    } else if(i == this.length - 1) {
+        return this.pop();
+    } else {
+        var node = findNode(this, i);
+        if(node) {
+            var before = node.previous;
+            var after = node.next;
+            before.next = after;
+            after.previous = before;
+            this.length--;
+        } else {
+            return undefined;
+        }
+    }
+};
+
 // Inner 'private' function to locate a node at the given index
 function findNode(that, i) {
     var item, j;

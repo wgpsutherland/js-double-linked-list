@@ -257,6 +257,18 @@ describe('testing linked-list', function () {
             list.shift();
             expect(list.length).to.equal(0);
         });
+
+        it('should return the actual reference to the object that was passed into the list', function() {
+            var list = new LinkedList();
+            var string = 'one';
+            list.push(string);
+            expect(list.shift()).to.equal(string);
+
+            list = new LinkedList();
+            var obj = {foo: 'bar'};
+            list.push(obj);
+            expect(list.shift()).to.equal(obj);
+        });
     });
 
     describe('#pop', function () {
@@ -333,6 +345,18 @@ describe('testing linked-list', function () {
             expect(list.length).to.equal(1);
             list.pop();
             expect(list.length).to.equal(0);
+        });
+
+        it('should return the actual reference to the object that was passed into the list', function() {
+            var list = new LinkedList();
+            var string = 'one';
+            list.push(string);
+            expect(list.pop()).to.equal(string);
+
+            list = new LinkedList();
+            var obj = {foo: 'bar'};
+            list.push(obj);
+            expect(list.pop()).to.equal(obj);
         });
     });
 
@@ -507,6 +531,107 @@ describe('testing linked-list', function () {
             list.add(0, 'two');
             list.add(0, 'three');
             expect(list.length).to.equal(3);
+        });
+    });
+
+    describe('#remove', function() {
+
+        it('should remove the correct item', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.push('four');
+            list.push('five');
+            expect(list.remove(4)).to.equal('five');
+            expect(list.remove(3)).to.equal('four');
+            expect(list.remove(2)).to.equal('three');
+            expect(list.remove(1)).to.equal('two');
+            expect(list.remove(0)).to.equal('one');
+        });
+
+        it('should move the positions of the items after it', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.push('four');
+            list.push('five');
+            list.remove(1);
+            expect(list.get(0)).to.equal('one');
+            expect(list.get(1)).to.equal('three');
+            expect(list.get(2)).to.equal('four');
+        });
+
+        it('removing from index 0 should change the first item in the list', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.remove(0);
+            expect(list.first()).to.equal('two');
+        });
+
+        it('removing from index list.length should change the last item in the list', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            list.remove(list.length - 1);
+            expect(list.last()).to.equal('two');
+        });
+
+        it('should decrease the length by one', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            expect(list.length).to.equal(3);
+            list.remove(2);
+            expect(list.length).to.equal(2);
+            list.remove(1);
+            expect(list.length).to.equal(1);
+            list.remove(0);
+            expect(list.length).to.equal(0);
+        });
+
+        it('should return undefined if removing from the empty list', function() {
+            var list = new LinkedList();
+            expect(list.remove(0)).to.equal(undefined);
+        });
+
+        it('should return undefined if removing from a non existent index in the list', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            expect(list.remove(3)).to.equal(undefined);
+            expect(list.remove(-1)).to.equal(undefined);
+            expect(list.remove(100)).to.equal(undefined);
+        });
+
+        it('should return undefined if removing from a decimal index', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            expect(list.remove(0.1)).to.equal(undefined);
+            expect(list.remove(1.4)).to.equal(undefined);
+            expect(list.remove(-1.1)).to.equal(undefined);
+            expect(list.remove(3.00000001)).to.equal(undefined);
+            expect(list.remove(2.99999999)).to.equal(undefined);
+        });
+
+        it('should return the actual reference to the object that was passed into the list', function() {
+            var list = new LinkedList();
+            var string = 'one';
+            list.push(string);
+            expect(list.remove(0)).to.equal(string);
+
+            list = new LinkedList();
+            var obj = {foo: 'bar'};
+            list.push(obj);
+            expect(list.remove(0)).to.equal(obj);
         });
     });
 

@@ -1,7 +1,7 @@
 Double Linked List
 ==================
 
-A JavaScript implementation of a double linked list. Much faster than the native JS array if your focus is adding
+A JavaScript implementation of a doubly-linked list. Much faster than the native JS array if your focus is adding
 and removing from large data sets. 
 
 Slow if you need to randomly access elements from within the data set.
@@ -31,6 +31,7 @@ Slow if you need to randomly access elements from within the data set.
 * [`last`](#last)   
 * [`get`](#get)   
 * [`add`](#add)   
+* [`remove`](#remove)   
 * [`length`](#length)   
 
 ### Method reference
@@ -63,27 +64,25 @@ Add an item to the start of the list.
 
     list.pop();
 
-Remove the item at the end of the list, returning the removed item.
+Removes the item at the end of the list, returning the removed item.
 Returns `undefined` if the list is empty.
 
     list.push('one');
     list.push('two');
     list.push('three');
-    var item = list.pop();
-    console.log(item); // 'three'
+    console.log(list.pop()); // 'three'
     
 #### \#shift
 
     list.shift();
 
-Remove the item at the start of the list, returning the removed item.
+Removes the item at the start of the list, returning the removed item.
 Returns `undefined` if the list is empty.
 
     list.push('one');
     list.push('two');
     list.push('three');
-    var item = list.shift();
-    console.log(item); // 'one'
+    console.log(list.shift()); // 'one'
     
 #### \#first
 
@@ -140,6 +139,20 @@ Adds the item to the list at the given index.
     console.log(list.get(1)); // 'hello'
     console.log(list.get(2)); // 'you'
     console.log(list.get(5)); // 'something'
+    
+    
+#### \#remove
+
+    list.remove(i);
+    
+Removes the item at the given index from the list, returning the removed item.
+Returns `undefined` if an invalid value is given.
+
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    
+    console.log(list.remove(1)); // 'two'
     
 #### .length
 
