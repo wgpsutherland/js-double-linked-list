@@ -131,9 +131,9 @@ LinkedList.prototype.add = function(i, data) {
 
 // Remove the item at the given index in the list
 LinkedList.prototype.remove = function(i) {
-    if(i == 0) {
+    if(i === 0) {
         return this.shift();
-    } else if(i == this.length - 1) {
+    } else if(i === this.length - 1) {
         return this.pop();
     } else {
         var node = findNode(this, i);
@@ -153,18 +153,17 @@ LinkedList.prototype.remove = function(i) {
 function findNode(that, i) {
     var item, j;
     if(i >= that.length || i < 0 || i % 1 !== 0) {
-        return null;
-    } else if(i < that.length / 2) { // first -> middle
+        item = null;
+    } else if(i < (that.length / 2)) { // first -> middle
         item = that._start;
         for(j = 0; j < i; j++) {
             item = item.next;
         }
-        return item;
     } else { // middle <- last
         item = that._end;
         for(j = that.length - 1; j > i; j--) {
             item = item.previous;
         }
-        return item;
     }
+    return item;
 }
