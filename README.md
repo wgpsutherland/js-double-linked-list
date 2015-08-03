@@ -32,6 +32,7 @@ Slow if you need to randomly access elements from within the data set.
 * [`get`](#get)   
 * [`add`](#add)   
 * [`remove`](#remove)   
+* [`toString`](#tostring)   
 * [`length`](#length)   
 
 ### Method reference
@@ -155,6 +156,22 @@ Returns `undefined` if an invalid value is given.
     list.push('three');
     
     console.log(list.remove(1)); // 'two'
+    
+#### \#toString
+
+    var listString = list.toString();
+    
+Returns the contents of the list as a readable string.
+
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    
+    console.log(list.toString()); // 'one, two, three'
+    
+    list.push({hello: "this"});
+    list.push({goodbye: "that"});
+    console.log(list.toString()); // '{"hello":"this"}, {"goodbye":"that"}'
     
 #### .length
 
