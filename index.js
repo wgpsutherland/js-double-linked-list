@@ -44,7 +44,7 @@ LinkedList.prototype.add = function(i, data) {
     } else if(i >= this.length) {
         this.push(data);
     } else {
-        var node = findNode(this, i);
+        var node = findNode.call(this, i);
         if(node) {
             var before = node.previous;
             var after = node;
@@ -101,7 +101,7 @@ LinkedList.prototype.remove = function(i) {
     } else if(i === this.length - 1) {
         return this.pop();
     } else {
-        var node = findNode(this, i);
+        var node = findNode.call(this, i);
         if(node) {
             var before = node.previous;
             var after = node.next;
@@ -134,7 +134,7 @@ LinkedList.prototype.last = function() {
 
 // Returns the element at the given index
 LinkedList.prototype.get = function(i) {
-    var node = findNode(this, i);
+    var node = findNode.call(this, i);
     if(node) {
         return node.data;
     } else {
@@ -168,18 +168,18 @@ function makeNode(data) {
 }
 
 // 'private' - locate a node at the given index
-function findNode(that, i) {
+function findNode(i) {
     var item, j;
-    if(i >= that.length || i < 0 || i % 1 !== 0) {
+    if(i >= this.length || i < 0 || i % 1 !== 0) {
         item = null;
-    } else if(i < (that.length / 2)) { // first -> middle
-        item = that._start;
+    } else if(i < (this.length / 2)) { // first -> middle
+        item = this._start;
         for(j = 0; j < i; j++) {
             item = item.next;
         }
     } else { // middle <- last
-        item = that._end;
-        for(j = that.length - 1; j > i; j--) {
+        item = this._end;
+        for(j = this.length - 1; j > i; j--) {
             item = item.previous;
         }
     }
