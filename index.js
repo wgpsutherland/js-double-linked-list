@@ -37,9 +37,11 @@ LinkedList.prototype.push = function(data) {
 
 // Adds the data to the given index in the list
 LinkedList.prototype.add = function(i, data) {
-    if(i === 0) {
+    if(i % 1 !== 0) {
+        // do nothing
+    } else if(i <= 0) {
         this.unShift(data);
-    } else if(i === this.length) {
+    } else if(i >= this.length) {
         this.push(data);
     } else {
         var node = findNode(this, i);
@@ -52,8 +54,6 @@ LinkedList.prototype.add = function(i, data) {
             newNode.next = after;
             after.previous = newNode;
             this.length++;
-        } else {
-            // not sure how to handle failure to find the node
         }
     }
 };

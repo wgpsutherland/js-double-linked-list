@@ -126,7 +126,9 @@ Returns `undefined` if an invalid value is given.
 
     list.add(i, item);
     
-Adds the item to the list at the given index.    
+Adds the item to the list at the given index. 
+If the index is less than 0 it is appended to the front.
+If the index is greater than the length of the list it is appended to the end.
 
     list.push('one');
     list.push('two');

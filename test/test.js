@@ -506,11 +506,44 @@ describe('testing linked-list', function () {
             expect(list.first()).to.equal('new1');
         });
 
+        it('adding to an index of less than 0 should make the item the first in the list', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.add(-1, 'new1');
+            expect(list.first()).to.equal('new1');
+            list.add(-5, 'new2');
+            expect(list.first()).to.equal('new2');
+            list.add(-100, 'new3');
+            expect(list.first()).to.equal('new3');
+        });
+
         it('adding to index list.length should make the item the last in the list', function() {
             var list = new LinkedList();
             list.push('one');
             list.add(list.length, 'new1');
             expect(list.last()).to.equal('new1');
+        });
+
+        it('adding to a decimal index should do nothing', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.add(1.1, 'new1');
+            list.add(0.1, 'new1');
+            list.add(-5.7, 'new1');
+            expect(list.length).to.equal(1);
+            expect(list.first()).to.equal('one');
+            expect(list.last()).to.equal('one');
+        });
+
+        it('adding to an index larger than the length of the list should add to the end', function() {
+            var list = new LinkedList();
+            list.push('one');
+            list.add(list.length + 1, 'new1');
+            expect(list.last()).to.equal('new1');
+            list.add(10, 'new2');
+            expect(list.last()).to.equal('new2');
+            list.add(100, 'new3');
+            expect(list.last()).to.equal('new3');
         });
 
         it('should move the other items in the list correctly', function() {
