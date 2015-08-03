@@ -185,6 +185,19 @@ Returns the length of the list.
     
 ## Changelog
 
+* 2.1.x - 2/08/2015:
+    * \+ \# add (2.1.0)
+    * \+ \# add tests (2.1.0)
+    * \+ \# remove (2.1.0)
+    * \+ \# remove tests (2.1.0)
+    * \+ \# toString (2.1.0)
+    * \+ \# toString tests (2.1.0)
+    * Add new functions to documentation. (2.1.0)
+    * Reorder documentation. (2.1.0)
+    * Change internal workings: (2.1.0)
+        * 'Private' findNode function, and refactor methods to use it
+        * Change node creation to add data in constructor
+        * Reorder functions
 * 2.0.x - 31/07/2015:
     * Add some keywords to the package.json. (2.0.2)
     * Edit formatting of changelog. (2.0.2)
