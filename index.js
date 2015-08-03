@@ -142,21 +142,21 @@ LinkedList.prototype.get = function(i) {
     }
 };
 
-//// Returns the list in a printable format
-//LinkedList.prototype.toString = function() {
-//    var item = this._start;
-//    var string = "";
-//    for(var i = 0; i < this.length; i++) {
-//        if(typeof item.data === "object") {
-//            string += JSON.stringify(item.data);
-//        } else {
-//            string += item.data;
-//        }
-//        if (i !== this.length - 1) string += ', ';
-//        item = item.next;
-//    }
-//    return string;
-//};
+// Returns the list in a printable format
+LinkedList.prototype.toString = function() {
+    var item = this._start;
+    var string = "";
+    for(var i = 0; i < this.length; i++) {
+        if(typeof item.data === "object") {
+            string += JSON.stringify(item.data);
+        } else {
+            string += item.data;
+        }
+        if (i !== this.length - 1) string += ', ';
+        item = item.next;
+    }
+    return string;
+};
 
 // 'private' - create empty node
 function makeNode(data) {
