@@ -23,32 +23,20 @@ Slow if you need to randomly access elements from within the data set.
     
 ## Documentation
     
-* [`push`](#push)   
 * [`unShift`](#unshift)   
-* [`pop`](#pop)   
+* [`push`](#push)   
+* [`add`](#add)   
 * [`shift`](#shift)   
+* [`pop`](#pop)   
+* [`remove`](#remove)   
 * [`first`](#first)   
 * [`last`](#last)   
 * [`get`](#get)   
-* [`add`](#add)   
-* [`remove`](#remove)   
 * [`toString`](#tostring)   
 * [`length`](#length)   
 
 ### Method reference
 
-#### \#push
-
-    list.push(item);
-
-Add an item to the end of the list.
-
-    list.push('one');
-    list.push('two');
-    list.push('three');
-    console.log(list.last()); // 'three'
-    console.log(list.first()); // 'one'
-    
 #### \#unShift
 
     list.unShift(item);
@@ -61,17 +49,37 @@ Add an item to the start of the list.
     console.log(list.first()); // 'three'
     console.log(list.last()); // 'one'
 
-#### \#pop
+#### \#push
 
-    list.pop();
+    list.push(item);
 
-Removes the item at the end of the list, returning the removed item.
-Returns `undefined` if the list is empty.
+Add an item to the end of the list.
 
     list.push('one');
     list.push('two');
     list.push('three');
-    console.log(list.pop()); // 'three'
+    console.log(list.last()); // 'three'
+    console.log(list.first()); // 'one'
+
+#### \#add
+
+    list.add(i, item);
+    
+Adds the item to the list at the given index. 
+If the index is less than 0 it is appended to the front.
+If the index is greater than the length of the list it is appended to the end.
+
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    
+    list.add(1, 'hello');
+    list.add(2, 'you');
+    list.add(list.length, 'something'); // adds to the end of the list
+    
+    console.log(list.get(1)); // 'hello'
+    console.log(list.get(2)); // 'you'
+    console.log(list.get(5)); // 'something'
     
 #### \#shift
 
@@ -85,6 +93,31 @@ Returns `undefined` if the list is empty.
     list.push('three');
     console.log(list.shift()); // 'one'
     
+#### \#pop
+
+    list.pop();
+
+Removes the item at the end of the list, returning the removed item.
+Returns `undefined` if the list is empty.
+
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    console.log(list.pop()); // 'three'
+    
+#### \#remove
+
+    list.remove(i);
+    
+Removes the item at the given index from the list, returning the removed item.
+Returns `undefined` if an invalid value is given.
+
+    list.push('one');
+    list.push('two');
+    list.push('three');
+    
+    console.log(list.remove(1)); // 'two'
+   
 #### \#first
 
     list.first();
@@ -122,41 +155,7 @@ Returns `undefined` if an invalid value is given.
     console.log(list.get(0)); // 'one'
     console.log(list.get(1)); // 'two'
     console.log(list.get(2)); // 'three'
-    
-#### \#add
-
-    list.add(i, item);
-    
-Adds the item to the list at the given index. 
-If the index is less than 0 it is appended to the front.
-If the index is greater than the length of the list it is appended to the end.
-
-    list.push('one');
-    list.push('two');
-    list.push('three');
-    
-    list.add(1, 'hello');
-    list.add(2, 'you');
-    list.add(list.length, 'something'); // adds to the end of the list
-    
-    console.log(list.get(1)); // 'hello'
-    console.log(list.get(2)); // 'you'
-    console.log(list.get(5)); // 'something'
-    
-    
-#### \#remove
-
-    list.remove(i);
-    
-Removes the item at the given index from the list, returning the removed item.
-Returns `undefined` if an invalid value is given.
-
-    list.push('one');
-    list.push('two');
-    list.push('three');
-    
-    console.log(list.remove(1)); // 'two'
-    
+       
 #### \#toString
 
     var listString = list.toString();
@@ -183,7 +182,6 @@ Returns the length of the list.
     list.push('two');
     list.push('three');
     console.log(list.length); // 3
-    
     
 ## Changelog
 
