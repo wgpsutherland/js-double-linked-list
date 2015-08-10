@@ -48,7 +48,7 @@ var placeEnd = function (data, end, n1, n2) {
 var removeEnd = function (end, n1, n2) {
     if (this[end]) { // if the list isn't empty
         var data = this[end].data;
-        if (this[end][n1] === null) { // if the list is of length 1
+        if (this._end === this._start) { // if the list is of length 1
             this._end = this._start = null;
         } else {
             this[end] = this[end][n1];
