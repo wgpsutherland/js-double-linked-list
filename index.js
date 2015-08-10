@@ -71,100 +71,103 @@ var getEnd = function (end) {
 
 //==================== PUBLIC ===========================//
 
-// Adds the data to the front of the list
-LinkedList.prototype.unShift = function (data) {
-    placeEnd.call(this, data, '_start', 'previous', 'next')
-};
+LinkedList.prototype = {
 
-// Adds the data to the end of the list
-LinkedList.prototype.push = function (data) {
-    placeEnd.call(this, data, '_end', 'next', 'previous')
-};
+    // Adds the data to the front of the list
+    unShift: function (data) {
+        placeEnd.call(this, data, '_start', 'previous', 'next')
+    },
 
-// Adds the data to the given index in the list
-LinkedList.prototype.add = function (i, data) {
-    if (i % 1 !== 0) {
-        // do nothing
-    } else if (i <= 0) {
-        this.unShift(data);
-    } else if (i >= this.length) {
-        this.push(data);
-    } else {
-        var node = findNode.call(this, i);
-        if (node) {
-            var before = node.previous;
-            var after = node;
-            var newNode = makeNode(data);
-            newNode.previous = before;
-            newNode.next = after;
-            before.next = after.previous = newNode;
-            this.length++;
+    // Adds the data to the end of the list
+    push: function (data) {
+        placeEnd.call(this, data, '_end', 'next', 'previous')
+    },
+
+    // Adds the data to the given index in the list
+    add: function (i, data) {
+        if (i % 1 !== 0) {
+            // do nothing
+        } else if (i <= 0) {
+            this.unShift(data);
+        } else if (i >= this.length) {
+            this.push(data);
+        } else {
+            var node = findNode.call(this, i);
+            if (node) {
+                var before = node.previous;
+                var after = node;
+                var newNode = makeNode(data);
+                newNode.previous = before;
+                newNode.next = after;
+                before.next = after.previous = newNode;
+                this.length++;
+            }
         }
-    }
-};
+    },
 
-// Removes the first item from the list
-LinkedList.prototype.shift = function () {
-    return removeEnd.call(this, '_start', 'next', 'previous');
-};
+    // Removes the first item from the list
+    shift: function () {
+        return removeEnd.call(this, '_start', 'next', 'previous');
+    },
 
-// Removes the last item from the list
-LinkedList.prototype.pop = function () {
-    return removeEnd.call(this, '_end', 'previous', 'next');
-};
+    // Removes the last item from the list
+    pop: function () {
+        return removeEnd.call(this, '_end', 'previous', 'next');
+    },
 
-// Remove the item at the given index in the list
-LinkedList.prototype.remove = function (i) {
-    if (i === 0) {
-        return this.shift();
-    } else if (i === this.length - 1) {
-        return this.pop();
-    } else {
+    // Remove the item at the given index in the list
+    remove: function (i) {
+        if (i === 0) {
+            return this.shift();
+        } else if (i === this.length - 1) {
+            return this.pop();
+        } else {
+            var node = findNode.call(this, i);
+            if (node) {
+                var before = node.previous;
+                var after = node.next;
+                before.next = after;
+                after.previous = before;
+                this.length--;
+            } else {
+                return undefined;
+            }
+        }
+    },
+
+    // Returns the item at the start of the list
+    first: function () {
+        return getEnd.call(this, '_start');
+    },
+
+    // Returns the item at the end of the list
+    last: function () {
+        return getEnd.call(this, '_end');
+    },
+
+    // Returns the element at the given index
+    get: function (i) {
         var node = findNode.call(this, i);
         if (node) {
-            var before = node.previous;
-            var after = node.next;
-            before.next = after;
-            after.previous = before;
-            this.length--;
+            return node.data;
         } else {
             return undefined;
         }
-    }
-};
+    },
 
-// Returns the item at the start of the list
-LinkedList.prototype.first = function () {
-    return getEnd.call(this, '_start');
-};
-
-// Returns the item at the end of the list
-LinkedList.prototype.last = function () {
-    return getEnd.call(this, '_end');
-};
-
-// Returns the element at the given index
-LinkedList.prototype.get = function (i) {
-    var node = findNode.call(this, i);
-    if (node) {
-        return node.data;
-    } else {
-        return undefined;
-    }
-};
-
-// Returns the list in a printable format
-LinkedList.prototype.toString = function () {
-    var item = this._start;
-    var string = "";
-    for (var i = 0; i < this.length; i++) {
-        if (typeof item.data === "object") {
-            string += JSON.stringify(item.data);
-        } else {
-            string += item.data;
+    // Returns the list in a printable format
+    toString: function () {
+        var item = this._start;
+        var string = "";
+        for (var i = 0; i < this.length; i++) {
+            if (typeof item.data === "object") {
+                string += JSON.stringify(item.data);
+            } else {
+                string += item.data;
+            }
+            if (i !== this.length - 1) string += ', ';
+            item = item.next;
         }
-        if (i !== this.length - 1) string += ', ';
-        item = item.next;
+        return string;
     }
-    return string;
 };
