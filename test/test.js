@@ -20,6 +20,7 @@ describe('testing linked-list', function () {
         it('the first and last elements should be the same when there is one element in the list', function () {
             var list = new LinkedList();
             list.push('one');
+
             expect(list.first()).to.equal('one');
             expect(list.last()).to.equal('one');
             expect(list.last()).to.equal(list.last());

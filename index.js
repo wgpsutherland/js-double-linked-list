@@ -1,11 +1,42 @@
-module.exports = LinkedList;
+//==================== CONSTRUCTOR =======================//
 
-// Constructor
-function LinkedList () {
+var LinkedList = module.exports = function() {
     this._start = null;
     this._end = null;
     this.length = 0;
-}
+};
+
+//==================== PRIVATE ===========================//
+
+// Create empty node
+var makeNode = function(data) {
+    return {
+        data: data,
+        previous: null,
+        next: null
+    }
+};
+
+// Locate a node at the given index
+var findNode = function(i) {
+    var item, j;
+    if(i >= this.length || i < 0 || i % 1 !== 0) {
+        item = null;
+    } else if(i < (this.length / 2)) { // first -> middle
+        item = this._start;
+        for(j = 0; j < i; j++) {
+            item = item.next;
+        }
+    } else { // middle <- last
+        item = this._end;
+        for(j = this.length - 1; j > i; j--) {
+            item = item.previous;
+        }
+    }
+    return item;
+};
+
+//==================== PUBLIC ===========================//
 
 // Adds the data to the front of the list
 LinkedList.prototype.unShift = function(data) {
@@ -157,31 +188,3 @@ LinkedList.prototype.toString = function() {
     }
     return string;
 };
-
-// 'private' - create empty node
-function makeNode(data) {
-    return {
-        data: data,
-        previous: null,
-        next: null
-    }
-}
-
-// 'private' - locate a node at the given index
-function findNode(i) {
-    var item, j;
-    if(i >= this.length || i < 0 || i % 1 !== 0) {
-        item = null;
-    } else if(i < (this.length / 2)) { // first -> middle
-        item = this._start;
-        for(j = 0; j < i; j++) {
-            item = item.next;
-        }
-    } else { // middle <- last
-        item = this._end;
-        for(j = this.length - 1; j > i; j--) {
-            item = item.previous;
-        }
-    }
-    return item;
-}
