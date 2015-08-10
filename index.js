@@ -61,8 +61,8 @@ var removeEnd = function (end, n1, n2) {
 
 // Gets the given end's data if it exists
 var getEnd = function (end) {
-    if (this[end]) var x = this[end].data;
-    return x; // will be undefined if the list is empty
+    var x = this[end] || {};
+    return x.data; // will be undefined if the list is empty
 };
 
 //==================== PUBLIC ===========================//
