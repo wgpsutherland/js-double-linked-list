@@ -94,12 +94,10 @@ LinkedList.prototype = {
         } else {
             var node = findNode.call(this, i);
             if (node) {
-                var before = node.previous;
-                var after = node;
                 var newNode = makeNode(data);
-                newNode.previous = before;
-                newNode.next = after;
-                before.next = after.previous = newNode;
+                newNode.previous = node.previous;
+                newNode.next = node;
+                node.previous.next = node.previous = newNode;
                 this.length++;
             }
         }
