@@ -124,11 +124,10 @@ LinkedList.prototype = {
         } else {
             var node = findNode.call(this, i);
             if (node) {
-                var before = node.previous;
-                var after = node.next;
-                before.next = after;
-                after.previous = before;
+                node.previous.next = node.next;
+                node.next.previous = node.previous;
                 this.length--;
+                return node.data;
             } else {
                 return undefined;
             }

@@ -581,7 +581,12 @@ describe('testing linked-list', function () {
             expect(list.remove(3)).to.equal('four');
             expect(list.remove(2)).to.equal('three');
             expect(list.remove(1)).to.equal('two');
-            expect(list.remove(0)).to.equal('one');
+            expect(list.remove(0)).to.equal('one')
+
+            list.push('one');
+            list.push('two');
+            list.push('three');
+            expect(list.remove(1)).to.equal('two');
         });
 
         it('should move the positions of the items after it', function() {
