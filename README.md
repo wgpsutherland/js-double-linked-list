@@ -186,6 +186,7 @@ Returns the length of the list.
 ## Changelog
 
 * 2.1.x - 2/08/2015:
+    * Refactor all prototype functions into wrapper, and abstract out functions to remove repetition of code (2.1.1)
     * Consistent style across functions and improve code appearance (2.1.1)
     * \+ \# add (2.1.0)
     * \+ \# add tests (2.1.0)
