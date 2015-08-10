@@ -21,16 +21,12 @@ var findNode = function (i) {
     var item, j;
     if (i >= this.length || i < 0 || i % 1 !== 0) {
         item = null;
-    } else if (i < (this.length / 2)) { // first -> middle
-        item = this._start;
-        for (j = 0; j < i; j++) {
-            item = item.next;
-        }
-    } else { // middle <- last
-        item = this._end;
-        for (j = this.length - 1; j > i; j--) {
-            item = item.previous;
-        }
+    } else if (i < (this.length / 2)) {
+        // first -> middle
+        for (j = 0, item = this._start; j < i; j++) item = item.next;
+    } else {
+        // last -> middle
+        for (j = this.length - 1, item = this._end; j > i; j--) item = item.previous;
     }
     return item;
 };
