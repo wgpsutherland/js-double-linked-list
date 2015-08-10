@@ -126,8 +126,6 @@ LinkedList.prototype = {
                 node.next.previous = node.previous;
                 this.length--;
                 return node.data;
-            } else {
-                return undefined;
             }
         }
     },
@@ -145,11 +143,7 @@ LinkedList.prototype = {
     // Returns the element at the given index
     get: function (i) {
         var node = findNode.call(this, i);
-        if (node) {
-            return node.data;
-        } else {
-            return undefined;
-        }
+        if (node) return node.data;
     },
 
     // Returns the list in a printable format
