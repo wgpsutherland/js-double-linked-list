@@ -139,16 +139,16 @@ LinkedList.prototype = {
     // Returns the list in a printable format
     toString: function () {
         var item = this._start;
-        var string = "";
+        var prettyList = "";
         for (var i = 0; i < this.length; i++) {
             if (typeof item.data === "object") {
-                string += JSON.stringify(item.data);
+                prettyList += JSON.stringify(item.data);
             } else {
-                string += item.data;
+                prettyList += item.data;
             }
-            if (i !== this.length - 1) string += ', ';
+            if (i !== this.length - 1) prettyList += ', ';
             item = item.next;
         }
-        return string;
+        return prettyList;
     }
 };
