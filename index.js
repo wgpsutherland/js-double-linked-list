@@ -133,7 +133,7 @@ LinkedList.prototype = {
     // Returns the element at the given index
     get: function (i) {
         var node = findNode.call(this, i);
-        if (node) return node.data;
+        return node ? node.data : undefined;
     },
 
     // Returns the list in a printable format
